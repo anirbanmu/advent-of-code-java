@@ -13,6 +13,7 @@ public final class Main {
             put(2, adventofcode.year2015.day2.Solver.class);
             put(3, adventofcode.year2015.day3.Solver.class);
             put(4, adventofcode.year2015.day4.Solver.class);
+            put(5, adventofcode.year2015.day5.Solver.class);
         }});
     }};
 
