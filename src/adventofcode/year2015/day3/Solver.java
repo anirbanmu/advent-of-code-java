@@ -4,21 +4,28 @@ import adventofcode.BaseSolver;
 import javafx.util.Pair;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import java.util.function.UnaryOperator;
 
-public class Solver extends BaseSolver<Integer> {
-    final static HashMap<Character, UnaryOperator<Point>> ACTIONS = new HashMap<>() {{
+public final class Solver extends BaseSolver<Integer> {
+    static final HashMap<Character, UnaryOperator<Point>> ACTIONS = new HashMap<>() {{
         put('>', (p) -> new Point(p.getX() + 1, p.getY()));
         put('<', (p) -> new Point(p.getX() - 1, p.getY()));
         put('^', (p) -> new Point(p.getX(), p.getY() + 1));
         put('v', (p) -> new Point(p.getX(), p.getY() - 1));
     }};
 
+    public Solver() {
+        super();
+    }
+
+    public Solver(String inputFilePath) {
+        super(inputFilePath);
+    }
+
     @Override
-    protected List<Answer> solve(FileReader input) throws IOException {
+    protected List<Answer> solve(BufferedReader bufferedReader) throws IOException {
         final var housesWithPresents = new Object() {
             public HashSet<Point> part1, part2;
 
@@ -38,7 +45,6 @@ public class Solver extends BaseSolver<Integer> {
             }
         };
 
-        final var bufferedReader = new BufferedReader(input);
         var roboTurn = false;
         int c;
         while ((c = bufferedReader.read()) != -1 && c != '\n') {

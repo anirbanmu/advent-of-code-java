@@ -1,11 +1,12 @@
 package adventofcode;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
-abstract public class BaseSolver<T> {
+public abstract class BaseSolver<T> {
     private String inputFilePath;
 
     public BaseSolver() {
@@ -22,9 +23,10 @@ abstract public class BaseSolver<T> {
      * @return list of answers (each part) for this day's problem.
      * @throws IOException if something goes wrong when reading input file.
      */
-    final public List<Answer> getAnswers() throws IOException {
-        final FileReader fileReader = new FileReader(new File(inputFilePath));
-        return solve(fileReader);
+    public final List<Answer> getAnswers() throws IOException {
+        try (final BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(inputFilePath)))) {
+            return solve(bufferedReader);
+        }
     }
 
     /**
@@ -33,7 +35,7 @@ abstract public class BaseSolver<T> {
      * @return list of answers (each part) for this day's problem.
      * @throws IOException if something goes wrong when reading input file.
      */
-    final public List<Answer> printAnswers() throws IOException {
+    public final List<Answer> printAnswers() throws IOException {
         final List<Answer> answers = getAnswers();
         int i = 0;
         for (Answer a : answers) {
@@ -50,11 +52,11 @@ abstract public class BaseSolver<T> {
      * @return list of answers (each part) for this day's problem.
      * @throws IOException if something goes wrong when reading input file.
      */
-    abstract protected List<Answer> solve(FileReader input) throws IOException;
+    protected abstract List<Answer> solve(BufferedReader input) throws IOException;
 
-    final protected class Answer {
-        private String descriptor;
-        private T value;
+    protected final class Answer {
+        public String descriptor;
+        public T value;
 
         public Answer(String descriptor, T value) {
             this.descriptor = descriptor;
