@@ -3,7 +3,6 @@ package adventofcode.year2015.day1;
 import adventofcode.BaseSolver;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,9 +24,7 @@ public final class Solver extends BaseSolver<Integer> {
     }
 
     @Override
-    protected List<Answer> solve(FileReader inputReader) throws IOException {
-        final BufferedReader bufferedReader = new BufferedReader(inputReader);
-
+    protected List<Answer> solve(BufferedReader bufferedReader) throws IOException {
         int floor = 0;
         int i = 0;
         int basementReachingIndex = -1;
