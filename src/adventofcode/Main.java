@@ -9,6 +9,7 @@ public class Main {
     private static final TreeMap<Integer, TreeMap<Integer, Class<?>>> SOLVERS = new TreeMap<>() {{
         put(2015, new TreeMap<>() {{
             put(1, adventofcode.year2015.day1.Solver.class);
+            put(2, adventofcode.year2015.day2.Solver.class);
         }});
     }};
 

@@ -24,6 +24,7 @@ public final class Solver extends BaseSolver<Integer> {
         super(inputFilePath);
     }
 
+    @Override
     protected List<Answer> solve(FileReader inputReader) throws IOException {
         final BufferedReader bufferedReader = new BufferedReader(inputReader);
 
