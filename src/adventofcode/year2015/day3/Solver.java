@@ -1,7 +1,7 @@
 package adventofcode.year2015.day3;
 
 import adventofcode.BaseSolver;
-import javafx.util.Pair;
+import adventofcode.Point;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,10 +10,10 @@ import java.util.function.UnaryOperator;
 
 public final class Solver extends BaseSolver<Integer> {
     static final HashMap<Character, UnaryOperator<Point>> ACTIONS = new HashMap<>() {{
-        put('>', (p) -> new Point(p.getX() + 1, p.getY()));
-        put('<', (p) -> new Point(p.getX() - 1, p.getY()));
-        put('^', (p) -> new Point(p.getX(), p.getY() + 1));
-        put('v', (p) -> new Point(p.getX(), p.getY() - 1));
+        put('>', (p) -> new Point(p.x + 1, p.y));
+        put('<', (p) -> new Point(p.x - 1, p.y));
+        put('^', (p) -> new Point(p.x, p.y + 1));
+        put('v', (p) -> new Point(p.x, p.y - 1));
     }};
 
     public Solver() {
@@ -66,19 +66,5 @@ public final class Solver extends BaseSolver<Integer> {
                 new Answer("Houses delivered with just Santa", housesWithPresents.part1.size()),
                 new Answer("Houses delivered with Santa & Robo", housesWithPresents.part2.size())
         ));
-    }
-
-    static final class Point extends Pair<Long, Long> {
-        public Point(Long key, Long value) {
-            super(key, value);
-        }
-
-        public long getX() {
-            return getKey();
-        }
-
-        public long getY() {
-            return getValue();
-        }
     }
 }
